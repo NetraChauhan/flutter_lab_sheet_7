@@ -85,28 +85,6 @@ class LabPage extends StatelessWidget{
   Widget build(BuildContext context){
     final icon=_iconFor(title);
     return Scaffold(
-      appBar:AppBar(
-        title:const Text('Flutter • Lab Sheet 7'),
-        actions:[
-          Container(
-            margin:const EdgeInsets.only(right:18),
-            padding:const EdgeInsets.symmetric(horizontal:12,vertical:7),
-            decoration:BoxDecoration(
-              color:const Color(0xFFEDEEFF),
-              borderRadius:BorderRadius.circular(20),
-            ),
-            child:const Row(children:[
-              Icon(Icons.circle,size:8,color:Color(0xFF5B5FEF)),
-              SizedBox(width:7),
-              Text('SQLite',style:TextStyle(
-                color:Color(0xFF4B4FD6),
-                fontWeight:FontWeight.w700,
-                fontSize:12,
-              )),
-            ]),
-          ),
-        ],
-      ),
       body:Container(
         decoration:const BoxDecoration(
           gradient:LinearGradient(
