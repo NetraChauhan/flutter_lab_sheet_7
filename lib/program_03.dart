@@ -7,7 +7,8 @@ class _S extends State<App>{
   @override Widget build(c)=>LabPage(title:'Insert Student',subtitle:'Using insert() method',child:Column(children:[
     FilledButton.icon(onPressed:()async{
       await db.clear();await db.insert(const Student(name:'Aarav Mehta',roll:'BCA101',course:'BCA'));
-      setState(()=>s=(await db.read()).first);
+      final rows=await db.read();
+      setState(()=>s=rows.first);
     },icon:const Icon(Icons.person_add),label:const Text('Insert Student')),
     const SizedBox(height:16),if(s!=null)StudentTile(s!)
   ]));
