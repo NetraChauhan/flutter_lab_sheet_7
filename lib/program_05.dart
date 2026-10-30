@@ -7,7 +7,8 @@ class _S extends State<App>{
   Future<void> add()async{
     final db=await h.database;await db.delete('students');
     await db.rawInsert('INSERT INTO students(name,roll,course) VALUES(?,?,?)',['Mira Kapoor','BCA102','BCA']);
-    setState(()=>s=(await h.read()).first);
+    final rows=await h.read();
+    setState(()=>s=rows.first);
   }
   @override Widget build(c)=>LabPage(title:'Raw Insert',subtitle:'Insert record using rawInsert()',child:Column(children:[
     FilledButton(onPressed:add,child:const Text('Run rawInsert()')),
