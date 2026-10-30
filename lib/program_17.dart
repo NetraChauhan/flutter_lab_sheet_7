@@ -5,8 +5,9 @@ class App extends StatefulWidget{const App({super.key});State<App> createState()
 class _S extends State<App>{
   final db=DatabaseHelper('q17.db'),n=TextEditingController(),r=TextEditingController(),c=TextEditingController(text:'BCA');
   List<Student> list=[];int? editing;
-  @override void initState(){super.initState();load();}
-  Future<void> load()async{await db.seed();list=await db.read(orderBy:'name ASC');if(mounted)setState((){});}
+  @override void initState(){super.initState();start();}
+  Future<void> start()async{await db.seed();await load();}
+  Future<void> load()async{list=await db.read(orderBy:'name ASC');if(mounted)setState((){});}
   Future<void> save()async{
     final s=Student(id:editing,name:n.text,roll:r.text,course:c.text);
     editing==null?await db.insert(s):await db.update(s);
